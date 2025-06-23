@@ -1,0 +1,9 @@
+def vacuum_cleaner(rooms):
+    for i in range(len(rooms)):
+        if rooms[i] == 1:
+            print(f'Cleaning room {i}')
+            rooms[i] = 0
+        print(f'Room {i} is clean')
+
+rooms = [1, 0, 1, 1]
+vacuum_cleaner(rooms)
