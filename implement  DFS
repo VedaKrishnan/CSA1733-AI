@@ -7,7 +7,7 @@ def dfs(graph, start, visited=None):
         for neighbor in graph[start]:
             dfs(graph, neighbor, visited)
 
-# Example graph using adjacency list
+
 graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
