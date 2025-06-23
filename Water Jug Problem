@@ -1,0 +1,21 @@
+def water_jug_problem(jug1_capacity, jug2_capacity, target):
+    visited = set()
+    queue = [(0, 0)]
+    while queue:
+        a, b = queue.pop(0)
+        if (a, b) in visited:
+            continue
+        visited.add((a, b))
+        print(f"Jug1: {a}L, Jug2: {b}L")
+        if a == target or b == target:
+            break
+        queue.append((jug1_capacity, b))
+        queue.append((a, jug2_capacity))
+        queue.append((0, b))
+        queue.append((a, 0))
+        transfer = min(a, jug2_capacity - b)
+        queue.append((a - transfer, b + transfer))
+        transfer = min(b, jug1_capacity - a)
+        queue.append((a + transfer, b - transfer))
+
+water_jug_problem(4, 3, 2)
