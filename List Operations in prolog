@@ -1,0 +1,11 @@
+len([], 0).
+len([_|T], N) :- len(T, N1), N is N1 + 1.
+
+sum([], 0).
+sum([H|T], S) :- sum(T, S1), S is H + S1.
+
+reverse([], []).
+reverse([H|T], R) :- reverse(T, RT), append(RT, [H], R).
+
+member(X, [X|_]).
+member(X, [_|T]) :- member(X, T).
