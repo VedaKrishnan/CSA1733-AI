@@ -1,0 +1,20 @@
+opposite(left, right).
+opposite(right, left).
+
+safe(M, C) :- 
+    M >= C ; M = 0.
+
+move(state(M1, C1, M2, C2, left), state(M1New, C1New, M2New, C2New, right)) :-
+    move_boat(M1, C1, M1New, C1New, M, C),
+    M2New is M2 + M, C2New is C2 + C.
+
+move(state(M1, C1, M2, C2, right), state(M1New, C1New, M2New, C2New, left)) :-
+    move_boat(M2, C2, M2New, C2New, M, C),
+    M1New is M1 + M, C1New is C1 + C.
+
+move_boat(M, C, MNew, CNew, MoveM, MoveC) :-
+    member([MoveM, MoveC], [[1,0],[2,0],[0,1],[0,2],[1,1]]),
+    M >= MoveM, C >= MoveC,
+    MNew is M - MoveM,
+    CNew is C - MoveC,
+    safe(MNew, CNew).
