@@ -1,0 +1,13 @@
+capacity(4, 3).
+state(0, 0).
+
+goal(2, _).
+
+move((X, Y), (4, Y)) :- X < 4.
+move((X, Y), (X, 3)) :- Y < 3.
+move((X, Y), (0, Y)) :- X > 0.
+move((X, Y), (X, 0)) :- Y > 0.
+move((X, Y), (X1, Y1)) :- 
+    Total is X + Y,
+    capacity(4, 3),
+    (Total >= 4 -> X1 = 4, Y1 is Total - 4 ; X1 = Total, Y1 = 0).
