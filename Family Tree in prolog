@@ -1,0 +1,11 @@
+father(john, mary).
+father(john, peter).
+father(peter, sam).
+mother(susan, mary).
+mother(susan, peter).
+
+parent(X, Y) :- father(X, Y).
+parent(X, Y) :- mother(X, Y).
+
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
